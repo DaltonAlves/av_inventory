@@ -1,0 +1,27 @@
+---
+layout: default
+title: IBT HQ AV Inventory
+---
+<div class="wrapper">
+  <div class="grid">
+    {% for item in site.items %}
+      <a href="{{ item.url | relative_url }}" class="card">
+        <div class="card-thumb">
+          {% if item.images.size > 0 %}
+            <img src="{{ item.images[0] | relative_url }}" 
+                 onerror="this.src='{{ '/assets/images/default_cassette.png' | relative_url }}';" 
+                 loading="lazy" 
+                 alt="{{ item.unique_id }}">
+          {% else %}
+            <img src="{{ '/assets/images/default_cassette.png' | relative_url }}" alt="Imaging Pending">
+          {% endif %}
+        </div>
+        <div class="card-info">
+          <h3>{{ item.title }}</h3>
+          <p class="card-id">{{ item.unique_id }}</p>
+          <p class="card-format">{{ item.format }}</p>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>  

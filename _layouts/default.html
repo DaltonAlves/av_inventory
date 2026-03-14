@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | AV Inventory</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body class="preload">
+  <div class="left info">
+    <header>
+      <nav>
+        <div id="site-name">
+          <a href="{{ '/' | relative_url }}">AV Inventory Tracker</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      {% if page.url == "/" %}
+        <h1 class="title-home">Collection Overview</h1>
+      {% else %}
+        <h1 class="title-home">Item Details</h1>
+      {% endif %}
+
+      <div class="intro_p">
+        <p>Tracking the digitization of 1,500 audiovisual items. Browse the collection to view carrier condition and metadata.</p>
+      </div>
+
+      {% if page.url == "/" %}
+      <div class="search-container">
+        <input type="search" id="inventorySearch" placeholder="Search by ID or Title..." aria-label="Search Inventory">
+        <p id="searchCount" class="search-stats">Showing all items</p>
+      </div>
+      {% endif %}
+    </main>
+  </div>
+
+  <div class="right works">
+    {{ content }}
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.remove("preload");
+    });
+  </script>
+
+  {% if page.url == "/" %}
+  <script>
+    const searchInput = document.getElementById('inventorySearch');
+    const searchCount = document.getElementById('searchCount');
+    
+    if (searchInput) {
+      searchInput.addEventListener('keyup', () => {
+        const filter = searchInput.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          // Grabs the title and ID from the card structure
+          const title = card.querySelector('h3').innerText.toLowerCase();
+          const id = card.querySelector('.card-id').innerText.toLowerCase();
+
+          if (title.includes(filter) || id.includes(filter)) {
+            card.style.display = "";
+            visibleCount++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        // Update the counter text
+        if (filter === "") {
+          searchCount.innerText = "Showing all items";
+        } else {
+          searchCount.innerText = `Found ${visibleCount} matches`;
+        }
+      });
+    }
+  </script>
+  {% endif %}
+</body>
+</html>

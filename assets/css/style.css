@@ -1,0 +1,289 @@
+/* 1. FONTS */
+@font-face {
+  font-family: "Gibson";
+  src: url("../fonts/GibsonVF-Regular.woff2") format("woff2"),
+       url("../fonts/GibsonVF-Regular.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gibson";
+  src: url("../fonts/GibsonVF-Italic.woff2") format("woff2"),
+       url("../fonts/GibsonVF-Italic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* 2. VARIABLES */
+:root {
+  --gw-white: #ffffff;
+  --gw-light: #eeeeee;
+  --gw-dark-grey: #444444;
+  --gw-dark-blue: #033c5a;
+  --gw-light-blue: #0073aa;
+  --gw-hover: #A75523;
+  --gw-buff: #aa9868;
+  --gw-hover-buff: #d9d0bb;
+}
+
+/* 3. CORE LAYOUT */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Gibson", "Helvetica", sans-serif;
+  background-color: var(--gw-white);
+  color: var(--gw-dark-grey);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden; /* Keeps the split-pane fixed */
+}
+
+/* 4. LEFT PANE (Sidebar) */
+.left {
+  width: max(20%, 23.6rem);
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 2rem 1.5rem;
+  position: relative;
+  background-color: var(--gw-white);
+  z-index: 10;
+}
+
+#site-name a {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--gw-dark-blue);
+  text-decoration: none;
+}
+
+h1.title-home {
+  font-size: 2.5rem;
+  border-bottom: 2px solid var(--gw-buff);
+  padding-bottom: 0.5rem;
+  color: var(--gw-dark-blue);
+  font-weight: 200;
+}
+
+/* 5. RIGHT PANE (Content/Inventory) */
+.right {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background-color: var(--gw-dark-blue);
+  color: var(--gw-white);
+  border-left: 1px solid var(--gw-white);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* 6. INVENTORY ITEM VIEW (Single Item) */
+.inventory-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2.5rem;
+}
+
+.photo-pane {
+  flex: 1;
+  min-width: 300px;
+  max-height: calc(100vh - 100px); /* Keep photos scrollable inside pane */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Custom Scrollbar for photo pane */
+.photo-pane::-webkit-scrollbar { width: 8px; }
+.photo-pane::-webkit-scrollbar-thumb { background: var(--gw-buff); border-radius: 4px; }
+
+.image-wrapper {
+  margin-bottom: 2rem;
+  border: 3px double var(--gw-white);
+  background: #000;
+}
+
+.image-wrapper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.notes-pane {
+  flex: 1;
+  min-width: 300px;
+}
+
+.item-title {
+  font-size: 1.8rem;
+  color: var(--gw-buff);
+  margin-top: 0;
+  line-height: 1.2;
+}
+
+.metadata-list p {
+  margin: 0.6rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 1.1rem;
+}
+
+.metadata-list span {
+  color: var(--gw-buff);
+  font-weight: bold;
+}
+
+/* 7. GRID & CARDS (Home Page Gallery) */
+.grid {
+  display: grid;
+  padding: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  border-color: var(--gw-buff);
+}
+
+/* Home Page Thumbnails */
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-placeholder {
+  color: var(--gw-white);
+  opacity: 0.3;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.card-info {
+  padding: 1.2rem;
+}
+
+.card-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit title height in grid */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.card-id {
+  color: var(--gw-buff);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.card-format {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin: 0.3rem 0 0 0;
+}
+
+/* 8. UI ELEMENTS */
+.btn {
+  display: inline-flex;
+  padding: 0.8rem 1.2rem;
+  background-color: var(--gw-dark-blue);
+  color: var(--gw-white);
+  text-decoration: none;
+  border: 1px solid var(--gw-white);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--gw-light-blue);
+}
+
+/* 9. RESPONSIVE */
+@media (max-width: 55rem) {
+  body {
+    flex-direction: column;
+    overflow: auto;
+  }
+  .left {
+    width: 100%;
+    height: auto;
+  }
+  .right {
+    min-height: 100vh;
+  }
+  .inventory-container {
+    padding: 1.5rem;
+  }
+}
+
+/* Utility to hide things during load */
+.preload * {
+  transition: none !important;
+}
+
+/* Sidebar Search Styling */
+.search-container {
+  margin-top: 2rem;
+  border-top: 1px solid var(--gw-light);
+  padding-top: 1.5rem;
+}
+
+#inventorySearch {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--gw-dark-grey);
+  font-family: "Gibson", sans-serif;
+  font-size: 0.9rem;
+  background-color: var(--gw-light);
+  box-sizing: border-box;
+}
+
+#inventorySearch:focus {
+  outline: 2px solid var(--gw-buff);
+  background-color: var(--gw-white);
+}
+
+.search-stats {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--gw-dark-grey);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}

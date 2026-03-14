@@ -1,0 +1,32 @@
+:root {
+  --gw-white: #ffffff;
+  --gw-light: #eeeeee;
+  --gw-dark-grey: #444444;
+  --gw-dark-blue: #033c5a;
+  --gw-light-blue: #0073aa;
+  --gw-hover: #A75523;
+  --gw-buff: #aa9868;
+}
+
+html, body { height: 100%; margin: 0; font-family: "Helvetica", sans-serif; }
+body { display: flex; flex-direction: row; overflow: hidden; }
+
+.left { width: max(33%, 23.6rem); padding: 2rem; box-sizing: border-box; overflow-y: auto; }
+.right { flex: 1; background-color: var(--gw-dark-blue); overflow-y: auto; color: white; border-left: 1px solid white; }
+
+.btn { 
+  display: inline-block; padding: 0.5rem 1rem; 
+  background: var(--gw-dark-blue); color: white; text-decoration: none; 
+}
+
+/* Inventory Specifics */
+.inventory-container { display: flex; gap: 2rem; padding: 2rem; flex-wrap: wrap; }
+.photo-pane { flex: 1; min-width: 300px; }
+.photo-pane img { width: 100%; border: 3px double white; }
+.notes-pane { flex: 1; min-width: 300px; }
+.status-badge { background: var(--gw-hover); padding: 2px 8px; border-radius: 4px; }
+
+/* Grid for Home Page */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; padding: 2rem; }
+.card { border: 1px solid white; padding: 1rem; text-decoration: none; color: white; transition: 0.2s; }
+.card:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); }

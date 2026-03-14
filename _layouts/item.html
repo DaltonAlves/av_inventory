@@ -1,0 +1,40 @@
+---
+layout: default
+---
+<div class="wrapper">
+  <nav class="breadcrumb"><a class="btn" href="{{ '/' | relative_url }}">⟵ Back to Inventory</a></nav>
+  
+  <div class="inventory-container">
+    <div class="photo-pane">
+      {% if page.images.size > 0 %}
+        {% for img in page.images %}
+          <div class="image-wrapper">
+            <img src="{{ img | relative_url }}" 
+                 onerror="this.src='{{ '/assets/images/default_cassette.png' | relative_url }}';" 
+                 alt="Photo of {{ page.unique_id }}">
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="image-wrapper">
+          <img src="{{ '/assets/images/default_cassette.png' | relative_url }}" alt="Imaging Pending">
+        </div>
+        <p class="status-badge" style="background: var(--gw-dark-grey); margin-top: 10px;">Imaging Coming Soon!</p>
+      {% endif %}
+    </div>
+
+    <div class="notes-pane">
+      <h2 class="item-title">{{ page.title }}</h2>
+      <div class="metadata-list">
+        <p><span>Unique ID:</span> {{ page.unique_id }}</p>
+        <p><span>Format:</span> {{ page.format }}</p>
+        <p><span>Quantity:</span> {{ page.quantity }}</p>
+        <p><span>Date on Label:</span> {{ page.date_on_label }}</p>
+        <p><span>Condition:</span> {{ page.condition }}</p>
+      </div>
+      <hr>
+      <div class="internal-content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</div>

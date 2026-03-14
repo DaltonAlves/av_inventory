@@ -1,0 +1,16 @@
+title: AV Inventory Tracker
+baseurl: "" # Keep this empty for local development
+url: "http://localhost:4000"
+
+collections:
+  items:
+    output: true
+
+exclude:
+  - venv/
+  - .venv/
+  - .gitignore
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - "*.csv"

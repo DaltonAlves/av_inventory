@@ -1,0 +1,12 @@
+
+.jekyll-cache/
+.jekyll-metadata
+_site/
+
+.DS_Store
+Thumbs.db
+
+assets/images/inventory/
+
+venv/
+.venv/
