@@ -287,3 +287,22 @@ h1.title-home {
   margin-top: 0.5rem;
   letter-spacing: 1px;
 }
+
+.tag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Workflow Colors */
+.status-digitized { background: #2ecc71; color: white; }
+.status-selected { background: #3498db; color: white; }
+.status-review-pending { background: #f1c40f; color: black; }
+.status-not-selected { background: #95a5a6; color: white; }
+
+/* Priority Colors */
+.priority-high { color: #e74c3c; border: 1px solid #e74c3c; }
+.priority-medium { color: #f39c12; border: 1px solid #f39c12; }
+.priority-low { color: #7f8c8d; border: 1px solid #7f8c8d; }

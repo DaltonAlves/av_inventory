@@ -16,7 +16,7 @@ layout: default
         {% endfor %}
       {% else %}
         <div class="image-wrapper">
-          <img src="{{ '/assets/images/default_cassette.png' | relative_url }}" alt="Imaging Pending">
+          <img src="{{ '/assets/images/default_cassette.png' | relative_url }}" alt="Imaging Coming Soon">
         </div>
         <p class="status-badge" style="background: var(--gw-dark-grey); margin-top: 10px;">Imaging Coming Soon!</p>
       {% endif %}
@@ -24,13 +24,19 @@ layout: default
 
     <div class="notes-pane">
       <h2 class="item-title">{{ page.title }}</h2>
+      
       <div class="metadata-list">
         <p><span>Unique ID:</span> {{ page.unique_id }}</p>
         <p><span>Format:</span> {{ page.format }}</p>
         <p><span>Quantity:</span> {{ page.quantity }}</p>
         <p><span>Date on Label:</span> {{ page.date_on_label }}</p>
         <p><span>Condition:</span> {{ page.condition }}</p>
+        <p><span>Ephemera:</span> {{ page.ephemera_count }} items</p>
+        <hr>
+        <p><span>Workflow:</span> <span class="tag status-{{ page.workflow_status | slugify }}">{{ page.workflow_status }}</span></p>
+        <p><span>Priority:</span> <span class="tag priority-{{ page.curatorial_priority | slugify }}">{{ page.curatorial_priority }}</span></p>
       </div>
+
       <hr>
       <div class="internal-content">
         {{ content }}
