@@ -8,3 +8,5 @@ gem "base64"
 gem "bigdecimal"
 gem "mutex_m"
 gem "webrick"
+#help
+gem "public_suffix", "< 7.0"
