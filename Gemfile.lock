@@ -12,13 +12,13 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    ffi (1.17.3)
-    ffi (1.17.3-x86_64-linux-gnu)
+    ffi (1.17.4)
+    ffi (1.17.4-x86_64-linux-gnu)
     forwardable-extended (2.6.0)
-    google-protobuf (4.34.0)
+    google-protobuf (4.34.1)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.0-x86_64-linux-gnu)
+    google-protobuf (4.34.1-x86_64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
     http_parser.rb (0.8.1)
@@ -47,7 +47,7 @@ GEM
       sass-embedded (~> 1.75)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    json (2.19.1)
+    json (2.19.3)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -62,7 +62,7 @@ GEM
     mutex_m (0.3.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (6.0.2)
+    public_suffix (7.0.5)
     rake (13.3.1)
     rb-fsevent (0.11.2)
     rb-inotify (0.11.1)
@@ -90,7 +90,6 @@ DEPENDENCIES
   bigdecimal
   jekyll (~> 4.3)
   mutex_m
-  public_suffix (< 7.0)
   webrick
 
 BUNDLED WITH
